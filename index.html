@@ -97,5 +97,58 @@
         const maxX = box.width - noBtn.offsetWidth - 20;
         const maxY = box.height - noBtn.offsetHeight - 20;
 
-        const randomX = Math.random()
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    });
+
+    /* 🎉 YES screen */
+    function sayYes() {
+        document.body.innerHTML = `
+            <div style="
+                height:100vh;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                background:#f5f0e6;
+                font-family:'Segoe UI', sans-serif;
+                color:#8b0000;
+                text-align:center;
+            ">
+                <img
+                    src="https://media.tenor.com/VXkW-nY4dxYAAAAd/happy-happy-dance.gif"
+                    style="width:300px; max-width:80%; margin-bottom:25px;"
+                />
+                <h1 style="
+                    font-size:80px;
+                    font-weight:900;
+                    letter-spacing:4px;
+                ">
+                    YAYYYYY!!!!
+                </h1>
+            </div>
+        `;
+    }
+
+    /* ❤️ Heart rain */
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "❤️";
+
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = Math.random() * 1.5 + 2 + "s";
+
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+
+    setInterval(createHeart, 180);
+</script>
+
+</body>
+</html>
 
