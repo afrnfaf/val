@@ -11,7 +11,7 @@
             overflow: hidden;
             display: flex;
             justify-content: center;
-            alignments: center;
+            align-items: center;
             background: #f5f0e6;
             font-family: 'Segoe UI', sans-serif;
         }
@@ -35,6 +35,7 @@
         .container {
             position: relative;
             z-index: 2;
+            width: 420px;
             text-align: center;
             background: white;
             padding: 40px;
@@ -44,16 +45,16 @@
 
         h1 {
             color: #8b0000;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .buttons {
             position: relative;
-            height: 100px;
+            height: 80px;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 12px 28px;
             font-size: 18px;
             border: none;
             border-radius: 30px;
@@ -63,13 +64,14 @@
         #yesBtn {
             background-color: #8b0000;
             color: white;
-            margin-right: 20px;
         }
 
         #noBtn {
             background-color: #d3cfc6;
             color: black;
             position: absolute;
+            left: 50%;
+            transform: translateX(60px);
         }
     </style>
 </head>
@@ -85,65 +87,15 @@
 </div>
 
 <script>
-    /* 😳 NO button escapes */
     const noBtn = document.getElementById("noBtn");
+    const container = document.querySelector(".container");
 
+    /* 😳 NO button escapes but stays inside */
     noBtn.addEventListener("mouseover", () => {
-        const box = document.querySelector(".container").getBoundingClientRect();
-        noBtn.style.left = Math.random() * (box.width - noBtn.offsetWidth) + "px";
-        noBtn.style.top = Math.random() * (box.height - noBtn.offsetHeight) + "px";
-    });
+        const box = container.getBoundingClientRect();
 
-    /* 🎉 YES → Working GIF + YAYYYYY */
-    function sayYes() {
-        document.body.innerHTML = `
-            <div style="
-                height:100vh;
-                display:flex;
-                flex-direction:column;
-                justify-content:center;
-                align-items:center;
-                background:#f5f0e6;
-                font-family:'Segoe UI', sans-serif;
-                color:#8b0000;
-                text-align:center;
-            ">
-                <img
-                    src="https://media.tenor.com/VXkW-nY4dxYAAAAd/happy-happy-dance.gif"
-                    alt="Celebration GIF"
-                    style="width:320px; max-width:80%; margin-bottom:25px;"
-                />
-                <h1 style="
-                    font-size:80px;
-                    font-weight:900;
-                    letter-spacing:4px;
-                ">
-                    YAYYYYY!!!!
-                </h1>
-            </div>
-        `;
-    }
+        const maxX = box.width - noBtn.offsetWidth - 20;
+        const maxY = box.height - noBtn.offsetHeight - 20;
 
-    /* ❤️ Rain hearts */
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerText = "❤️";
-
-        const x = Math.random() * window.innerWidth;
-        const fallDuration = Math.random() * 1.5 + 2;
-
-        heart.style.left = x + "px";
-        heart.style.animationDuration = fallDuration + "s";
-
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), fallDuration * 1000);
-    }
-
-    setInterval(createHeart, 180);
-</script>
-
-</body>
-</html>
+        const randomX = Math.random()
 
