@@ -72,22 +72,26 @@ button {
     transform: translateX(60px);
 }
 
+/* 🔴 Blood Red Click Me Button */
 .bottomBtn {
-    position: fixed !important;
-    bottom: 20px !important;
-    right: 0 !important;     /* absolute right edge */
-    margin-right: 15px;
-    background: none !important;
-    border: none !important;
-    color: #8b0000 !important;
-    font-weight: 900 !important;
-    font-size: 22px !important;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #8b0000;
+    color: white;
+    padding: 12px 26px;
+    border-radius: 30px;
+    font-weight: 900;
+    font-size: 20px;
     letter-spacing: 1px;
-    text-decoration: none;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
 }
 
-
+.bottomBtn:hover {
+    transform: scale(1.08);
+}
 </style>
 </head>
 
@@ -135,7 +139,7 @@ function sayYes() {
         ">
             <img src="yay.gif" style="width:300px; margin-bottom:25px;" />
             <h1 style="font-size:70px; font-weight:900;">YAYYYYY!!!!</h1>
-            <div class="bottomBtn" onclick="showHugs()">Click Me 😗</div>
+            <div class="bottomBtn" onclick="showHugs()">Click Me! 😗</div>
         </div>
     `;
 }
@@ -158,7 +162,7 @@ function showHugs() {
             <h1 style="font-size:50px; font-weight:900;">
                 I CAN GIVE ENDLESS HUGS 🫂🫂🫂
             </h1>
-            <div class="bottomBtn" onclick="showKisses()">Click Me 😗</div>
+            <div class="bottomBtn" onclick="showKisses()">Click Me! 😗</div>
         </div>
     `;
 }
@@ -180,6 +184,33 @@ function showKisses() {
             <img src="k.jpeg" style="width:300px; margin-bottom:30px;" />
             <h1 style="font-size:50px; font-weight:900;">
                 I CAN GIVE YOU ENDLESS KISSES 😘😘😘
+            </h1>
+            <div class="bottomBtn" onclick="showFuture()">Click Me! 😗</div>
+        </div>
+    `;
+}
+
+/* 👶 Final Page – Future Kids */
+function showFuture() {
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background:#f5f0e6;
+            font-family:'Segoe UI', sans-serif;
+            color:#8b0000;
+            text-align:center;
+        ">
+            <div style="display:flex; gap:20px; margin-bottom:30px;">
+                <img src="bb1.jpeg" style="width:200px; border-radius:15px;" />
+                <img src="bb2.jpeg" style="width:200px; border-radius:15px;" />
+            </div>
+
+            <h1 style="font-size:40px; font-weight:900;">
+                WE CAN HAVE BABIES THAT COULD LOOK LIKE THIS 👆
             </h1>
         </div>
     `;
@@ -203,5 +234,3 @@ setInterval(createHeart, 180);
 
 </body>
 </html>
-
-
