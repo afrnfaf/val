@@ -32,7 +32,6 @@ body {
 
 .container {
     position: relative;
-    z-index: 2;
     width: 420px;
     text-align: center;
     background: white;
@@ -43,12 +42,6 @@ body {
 
 h1 {
     color: #8b0000;
-    margin-bottom: 40px;
-}
-
-.buttons {
-    position: relative;
-    height: 80px;
 }
 
 button {
@@ -66,7 +59,6 @@ button {
 
 #noBtn {
     background-color: #d3cfc6;
-    color: black;
     position: absolute;
     left: 50%;
     transform: translateX(60px);
@@ -83,7 +75,6 @@ button {
     border-radius: 30px;
     font-weight: 900;
     font-size: 20px;
-    letter-spacing: 1px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     transition: transform 0.2s ease;
@@ -99,67 +90,36 @@ button {
 
 <div class="container">
     <h1>Will you be my forever Valentine? 🥹😘❤️</h1>
-
-    <div class="buttons">
-        <button id="yesBtn" onclick="sayYes()">Yes ❤️</button>
-        <button id="noBtn">No 😳</button>
-    </div>
+    <button id="yesBtn" onclick="sayYes()">Yes ❤️</button>
+    <button id="noBtn">No 😳</button>
 </div>
 
 <script>
-const noBtn = document.getElementById("noBtn");
-const container = document.querySelector(".container");
 
 /* 😳 NO button escapes */
+const noBtn = document.getElementById("noBtn");
 noBtn.addEventListener("mouseover", () => {
-    const box = container.getBoundingClientRect();
-    const maxX = box.width - noBtn.offsetWidth - 20;
-    const maxY = box.height - noBtn.offsetHeight - 20;
-
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+    noBtn.style.left = Math.random()*300 + "px";
+    noBtn.style.top = Math.random()*200 + "px";
 });
 
-/* 🎉 Page 1 – YAY */
+/* 🎉 YAY */
 function sayYes() {
     document.body.innerHTML = `
-        <div style="
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            background:#f5f0e6;
-            font-family:'Segoe UI', sans-serif;
-            color:#8b0000;
-            text-align:center;
-        ">
-            <img src="yay.gif" style="width:300px; margin-bottom:25px;" />
-            <h1 style="font-size:70px; font-weight:900;">YAYYYYY!!!!</h1>
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:#f5f0e6;text-align:center;">
+            <img src="yay.gif" style="width:300px;margin-bottom:25px;" />
+            <h1 style="font-size:70px;font-weight:900;color:#8b0000;">YAYYYYY!!!!</h1>
             <div class="bottomBtn" onclick="showHugs()">Click Me! 😗</div>
         </div>
     `;
 }
 
-/* 🤗 Page 2 – Hugs */
+/* 🤗 Hugs */
 function showHugs() {
     document.body.innerHTML = `
-        <div style="
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            background:#f5f0e6;
-            font-family:'Segoe UI', sans-serif;
-            color:#8b0000;
-            text-align:center;
-        ">
-            <img src="h.jpeg" style="width:300px; margin-bottom:30px;" />
-            <h1 style="font-size:50px; font-weight:900;">
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:#f5f0e6;text-align:center;">
+            <img src="h.jpeg" style="width:300px;margin-bottom:30px;" />
+            <h1 style="font-size:50px;font-weight:900;color:#8b0000;">
                 I CAN GIVE ENDLESS HUGS 🫂🫂🫂
             </h1>
             <div class="bottomBtn" onclick="showKisses()">Click Me! 😗</div>
@@ -167,22 +127,12 @@ function showHugs() {
     `;
 }
 
-/* 💋 Page 3 – Kisses */
+/* 💋 Kisses */
 function showKisses() {
     document.body.innerHTML = `
-        <div style="
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            background:#f5f0e6;
-            font-family:'Segoe UI', sans-serif;
-            color:#8b0000;
-            text-align:center;
-        ">
-            <img src="k.jpeg" style="width:300px; margin-bottom:30px;" />
-            <h1 style="font-size:50px; font-weight:900;">
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:#f5f0e6;text-align:center;">
+            <img src="k.jpeg" style="width:300px;margin-bottom:30px;" />
+            <h1 style="font-size:50px;font-weight:900;color:#8b0000;">
                 I CAN GIVE YOU ENDLESS KISSES 😘😘😘
             </h1>
             <div class="bottomBtn" onclick="showFuture()">Click Me! 😗</div>
@@ -190,49 +140,98 @@ function showKisses() {
     `;
 }
 
-/* 👶 Final Page – Future Kids */
+/* 👶 Babies */
 function showFuture() {
     document.body.innerHTML = `
-        <div style="
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            background:#f5f0e6;
-            font-family:'Segoe UI', sans-serif;
-            color:#8b0000;
-            text-align:center;
-        ">
-            <div style="display:flex; gap:20px; margin-bottom:30px;">
-                <img src="bb1.jpeg" style="width:350px; border-radius:15px;" />
-                <img src="bb 2.jpeg" style="width:200px; border-radius:15px;" />
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:#f5f0e6;text-align:center;">
+            <div style="display:flex;gap:20px;margin-bottom:30px;">
+                <img src="bb1.jpeg" style="width:250px;border-radius:15px;" />
+                <img src="bb 2.jpeg" style="width:250px;border-radius:15px;" />
             </div>
-
-            <h1 style="font-size:40px; font-weight:900;">
+            <h1 style="font-size:40px;font-weight:900;color:#8b0000;">
                 WE CAN HAVE BABIES THAT COULD LOOK LIKE THIS 👆
             </h1>
+            <div class="bottomBtn" onclick="showGrown()">Click Me! 😗</div>
         </div>
     `;
 }
 
-/* ❤️ Heart rain */
+/* 🧒 Grown */
+function showGrown() {
+    document.body.innerHTML = `
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:#f5f0e6;text-align:center;">
+            <div style="display:flex;gap:20px;margin-bottom:30px;">
+                <img src="k1.jpeg" style="width:250px;border-radius:15px;" />
+                <img src="k2.jpeg" style="width:250px;border-radius:15px;" />
+            </div>
+            <h1 style="font-size:40px;font-weight:900;color:#8b0000;">
+                THE BABIES COULD GROW UP TO THIS 👆
+            </h1>
+            <div class="bottomBtn" onclick="showFinal()">Click Me! 😗</div>
+        </div>
+    `;
+}
+
+/* 💕 Pretty Faces */
+function showFinal() {
+    document.body.innerHTML = `
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:#f5f0e6;text-align:center;">
+            <div style="display:flex;gap:20px;margin-bottom:30px;">
+                <img src="k3.jpeg" style="width:220px;height:350px;object-fit:cover;border-radius:15px;" />
+                <img src="k4.jpeg" style="width:220px;height:350px;object-fit:cover;border-radius:15px;" />
+            </div>
+            <h1 style="font-size:38px;font-weight:900;color:#8b0000;">
+                THE KIDS COULD GROW UP AND HAVE OUR PRETTY FACES 
+                (YOUR HANDSOME FACE ESPECIALLY 😘😘😘)
+            </h1>
+            <div class="bottomBtn" onclick="showLetter()">Click Me! 😗</div>
+        </div>
+    `;
+}
+
+/* 📜 Antique Letter */
+function showLetter() {
+    document.body.innerHTML = `
+        <div style="height:100vh;display:flex;justify-content:center;align-items:center;background:#f5f0e6;">
+            <div style="width:750px;padding:70px;background:#fdf5e6;
+                        box-shadow:0 15px 40px rgba(0,0,0,0.3);
+                        border-radius:10px;color:#5b3a29;
+                        line-height:1.9;font-size:22px;
+                        overflow:auto;max-height:85vh;">
+
+                <div style="text-align:center;margin-bottom:40px;">
+                    <img src="h1.jpeg" style="width:300px;border-radius:10px;" />
+                </div>
+
+                <h2 style="font-family:'Brush Script MT',cursive;font-size:42px;">
+                    Dear Adu,
+                </h2>
+
+                <div style="font-family:'Brush Script MT',cursive;font-size:26px;">
+                im writing u a digital love letter this time cause nee adthu illa to give u an actual handwritten one. i love writing letters for u adu. i know valentines is a bit cringe, but ee cringe okke alle oru ressam? A lot has changed since we first started dating we've learned a lot about each, learned a lot from our mistakes. i dont think i can ever let go of u adu. ur that close to me. i cant imagine a day without ur presence in any possible way, a phone call a message or anything. i wake up thinking of u sleep with u as my last thought of my day. u came into my life the most unexpected way. idk if u remember me telling u this but during 2024's new years i wrote this in a piece of paper ' i wish i could get to know aditya better and be friends with him' and saved it in my drawer. well guess what i was lucky enough to be more than friends and even more with u. i'm always grateful for u. i know i complain a lot about certain things but i want u to know that doesn't make me any ungrateful. i love you korrey and most. i know i've made a lot of unforgivable mistakes and tantrums, i genuinely don't know how to make up for all that but i assure u someday it'll all be done. i love how u are with me, nee enne conjikunnathum , ende koode immature arguments undakunnathum, oro koprayam kanikunnathum ellam ennik ishtaa aduu. and i wish to hold that forever even when we grow old to be thalla and thantha or appapan and ammama. i hope we can see eachother achieve our dreams and goals together. i know i make korachu over tantrums when ur busy with stuff but i swear ninne budhimuttikaan alla it's just that i can be a little attention seeking at times (i'm sorry). i'm happy for everything that makes u happy adu. 
+                <br><br>
+                I love you korrey korrey korrey.
+                <br><br>
+                (okay bye)
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+/* ❤️ Heart Rain */
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.innerText = "❤️";
-
     heart.style.left = Math.random() * window.innerWidth + "px";
     heart.style.animationDuration = Math.random() * 1.5 + 2 + "s";
-
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 4000);
 }
-
 setInterval(createHeart, 180);
+
 </script>
 
 </body>
 </html>
-
-
