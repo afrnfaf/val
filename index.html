@@ -1,4 +1,4 @@
-\\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -73,17 +73,20 @@ button {
 }
 
 .bottomBtn {
-    position: fixed;
-    bottom: 25px;
-    right: 5px;              /* pushes it to the extreme right */
-    background: none;
-    color: #8b0000;
-    font-weight: 900;        /* extra bold */
-    font-size: 20px;
-    letter-spacing: 1px;     /* slight thickness feel */
-    text-shadow: 0.5px 0 #8b0000;  /* subtle thickness effect */
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 0 !important;     /* absolute right edge */
+    margin-right: 15px;
+    background: none !important;
+    border: none !important;
+    color: #8b0000 !important;
+    font-weight: 900 !important;
+    font-size: 22px !important;
+    letter-spacing: 1px;
+    text-decoration: none;
     cursor: pointer;
 }
+
 
 </style>
 </head>
@@ -200,4 +203,5 @@ setInterval(createHeart, 180);
 
 </body>
 </html>
+
 
