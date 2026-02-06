@@ -1,80 +1,93 @@
-<!DOCTYPE html>
+\\<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Forever Valentine ❤️</title>
+<meta charset="UTF-8">
+<title>Forever Valentine ❤️</title>
 
-    <style>
-        body {
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #f5f0e6;
-            font-family: 'Segoe UI', sans-serif;
-        }
+<style>
+body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f0e6;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        /* ❤️ Falling hearts like rain */
-        .heart {
-            position: fixed;
-            top: -25px;
-            color: #8b0000;
-            font-size: 20px;
-            pointer-events: none;
-            animation: rain linear forwards;
-        }
+/* ❤️ Falling hearts */
+.heart {
+    position: fixed;
+    top: -25px;
+    color: #8b0000;
+    font-size: 20px;
+    pointer-events: none;
+    animation: rain linear forwards;
+}
 
-        @keyframes rain {
-            to {
-                transform: translateY(110vh);
-            }
-        }
+@keyframes rain {
+    to { transform: translateY(110vh); }
+}
 
-        .container {
-            position: relative;
-            z-index: 2;
-            width: 420px;
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+.container {
+    position: relative;
+    z-index: 2;
+    width: 420px;
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
 
-        h1 {
-            color: #8b0000;
-            margin-bottom: 40px;
-        }
+h1 {
+    color: #8b0000;
+    margin-bottom: 40px;
+}
 
-        .buttons {
-            position: relative;
-            height: 80px;
-        }
+.buttons {
+    position: relative;
+    height: 80px;
+}
 
-        button {
-            padding: 12px 28px;
-            font-size: 18px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-        }
+button {
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
 
-        #yesBtn {
-            background-color: #8b0000;
-            color: white;
-        }
+#yesBtn {
+    background-color: #8b0000;
+    color: white;
+}
 
-        #noBtn {
-            background-color: #d3cfc6;
-            color: black;
-            position: absolute;
-            left: 50%;
-            transform: translateX(60px);
-        }
-    </style>
+#noBtn {
+    background-color: #d3cfc6;
+    color: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(60px);
+}
+
+.bottomBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 5px;              /* pushes it to the extreme right */
+    background: none;
+    color: #8b0000;
+    font-weight: 900;        /* extra bold */
+    font-size: 20px;
+    letter-spacing: 1px;     /* slight thickness feel */
+    text-shadow: 0.5px 0 #8b0000;  /* subtle thickness effect */
+    cursor: pointer;
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="container">
@@ -87,70 +100,103 @@
 </div>
 
 <script>
-    const noBtn = document.getElementById("noBtn");
-    const container = document.querySelector(".container");
+const noBtn = document.getElementById("noBtn");
+const container = document.querySelector(".container");
 
-    /* 😳 NO button escapes but stays inside */
-    noBtn.addEventListener("mouseover", () => {
-        const box = container.getBoundingClientRect();
+/* 😳 NO button escapes */
+noBtn.addEventListener("mouseover", () => {
+    const box = container.getBoundingClientRect();
+    const maxX = box.width - noBtn.offsetWidth - 20;
+    const maxY = box.height - noBtn.offsetHeight - 20;
 
-        const maxX = box.width - noBtn.offsetWidth - 20;
-        const maxY = box.height - noBtn.offsetHeight - 20;
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+});
 
-        noBtn.style.left = randomX + "px";
-        noBtn.style.top = randomY + "px";
-    });
+/* 🎉 Page 1 – YAY */
+function sayYes() {
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background:#f5f0e6;
+            font-family:'Segoe UI', sans-serif;
+            color:#8b0000;
+            text-align:center;
+        ">
+            <img src="yay.gif" style="width:300px; margin-bottom:25px;" />
+            <h1 style="font-size:70px; font-weight:900;">YAYYYYY!!!!</h1>
+            <div class="bottomBtn" onclick="showHugs()">Click Me 😗</div>
+        </div>
+    `;
+}
 
-    /* 🎉 YES screen */
-    function sayYes() {
-        document.body.innerHTML = `
-            <div style="
-                height:100vh;
-                display:flex;
-                flex-direction:column;
-                justify-content:center;
-                align-items:center;
-                background:#f5f0e6;
-                font-family:'Segoe UI', sans-serif;
-                color:#8b0000;
-                text-align:center;
-            ">
-                <img
-                    src="yay.gif?v=1"
-                    style="width:300px; max-width:80%; margin-bottom:25px;"
-                />
-                <h1 style="
-                    font-size:80px;
-                    font-weight:900;
-                    letter-spacing:4px;
-                ">
-                    YAYYYYY!!!!
-                </h1>
-            </div>
-        `;
-    }
+/* 🤗 Page 2 – Hugs */
+function showHugs() {
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background:#f5f0e6;
+            font-family:'Segoe UI', sans-serif;
+            color:#8b0000;
+            text-align:center;
+        ">
+            <img src="hug.gif" style="width:300px; margin-bottom:30px;" />
+            <h1 style="font-size:50px; font-weight:900;">
+                I CAN GIVE ENDLESS HUGS 🫂🫂🫂
+            </h1>
+            <div class="bottomBtn" onclick="showKisses()">Click Me 😗</div>
+        </div>
+    `;
+}
 
-    /* ❤️ Heart rain */
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerText = "❤️";
+/* 💋 Page 3 – Kisses */
+function showKisses() {
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background:#f5f0e6;
+            font-family:'Segoe UI', sans-serif;
+            color:#8b0000;
+            text-align:center;
+        ">
+            <img src="kiss.gif" style="width:300px; margin-bottom:30px;" />
+            <h1 style="font-size:50px; font-weight:900;">
+                I CAN GIVE YOU ENDLESS KISSES 😘😘😘
+            </h1>
+        </div>
+    `;
+}
 
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.animationDuration = Math.random() * 1.5 + 2 + "s";
+/* ❤️ Heart rain */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
 
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-    }
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = Math.random() * 1.5 + 2 + "s";
 
-    setInterval(createHeart, 180);
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+}
+
+setInterval(createHeart, 180);
 </script>
 
 </body>
 </html>
-
-
-
